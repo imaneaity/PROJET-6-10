@@ -1,0 +1,25 @@
+:root {
+    --black: #141929;
+    --gold: #CCAB7B;
+    --white: #F7F3F4;
+}
+
+h1 {
+    color: var(--gold);
+}
+
+
+
+.header{
+    position: fixed;
+    top: 0;
+    left:0;
+    right: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(20, 25,41, .5);
+    backdrop-filter: blur(4px);
+    border-bottom: 1px solid var(--gold);
+    z-index: 10;
+}

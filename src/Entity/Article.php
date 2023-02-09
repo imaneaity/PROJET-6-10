@@ -109,4 +109,10 @@ class Article
 
         return $this;
     }
+
+    //fonction qui retourne le total d'un article selon le prix de la pizza et la quantité voulue
+    public function getTotal():float
+    {
+       return round( $this->quantity * $this->pizza->getPrice(), 2);
+    }
 }

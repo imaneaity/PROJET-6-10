@@ -140,7 +140,7 @@ class Order
     {
         $total = 0.0;
 
-        foreach($this->articles as $articles)
+        foreach($this->articles as $article)
         {
             $total += $article->getTotal();
         }

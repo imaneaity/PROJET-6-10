@@ -50,14 +50,24 @@ class OrderController extends AbstractController
             $repository->add($order, true);
 
             //redirection vers la page de validation
-            return $this->redirectToRoute('app_order_display');
+            return $this->redirectToRoute('app_order_validate',[
+                'id' => $order->getId(),
+            ]);
         }
-
-
-
 
         return $this->render('order/display.html.twig', [
             'form' => $form->createView(),
+        ]);
+    }
+
+
+    /**
+     * @Route("/commander/{id}/validation", name="app_order_validate")
+     */
+    public function validate(Order $order): Response
+    {
+        return $this->render('order/validate.html.twig' , [
+            'order' => $order,
         ]);
     }
 }

@@ -110,6 +110,10 @@ h1 {
     width: 1024px
 }
 
+
+.container .mg-top{
+    margin-top: 77px;
+}
 .pizza-card{
     display: flex;
     flex-direction: column;
@@ -188,4 +192,23 @@ h1 {
     padding: .8rem 1.8rem;
     text-decoration: none;
     font-weight: bold;
+}
+
+
+.pizza-card .quantity-container{
+    display: flex;
+    justify-content: center;
+    margin: .6rem;
+    align-items: center;
+}
+
+
+.pizza-card .quantity-container .btn{
+    margin: .6rem;
+}
+
+.pizza-card .quantity-container .quantity{
+    font-family:  'Lobster' , sans-serif;
+    font-size: 2.2rem;
+    margin: .6rem 3rem;
 }

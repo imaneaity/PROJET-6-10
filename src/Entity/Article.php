@@ -19,7 +19,7 @@ class Article
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Basket::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Basket::class, inversedBy="articles",cascade={"persist"})
      */
     private $basket;
 
@@ -29,7 +29,7 @@ class Article
     private $quantity;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Pizza::class, inversedBy="articles")
+     * @ORM\ManyToOne(targetEntity=Pizza::class, inversedBy="articles",cascade={"persist"})
      */
     private $pizza;
 

@@ -38,7 +38,7 @@ class Basket
     private $updatedAt;
 
     /**
-     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="basket")
+     * @ORM\OneToMany(targetEntity=Article::class, mappedBy="basket", cascade={"persist"})
      */
     private $articles;
 

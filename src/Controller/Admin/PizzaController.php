@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Pizza;
 use App\Form\PizzaType;
 use App\Repository\PizzaRepository;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,5 +51,33 @@ class PizzaController extends AbstractController
         ]);
     }
 
+
+    /**
+     * @Route("/admin/pizza/{id}/modifier", name="app_admin_pizza_update")
+     */
+    public function update(Pizza $pizza, Request $request, PizzaRepository $repository): Response
+    {
+        
+        //recupere la pizza en question et la passe au formulaire
+        $form = $this->createForm(PizzaType::class, $pizza); // $pizza est passé en argument afin de préremplir le form
+        
+        $form->handleRequest($request);
+
+        //tester si le formulaire est envoyé et est valide
+        if($form->isSubmitted() && $form->isValid()){
+
+            //sauvegarde de la pizza dans la bd
+            $repository->add($form->getData(), true);
+
+            //redirection vers la liste des pizzas
+            return $this->redirectToRoute('app_admin_pizza_list');
+        }
+
+        return $this->render('admin/pizza/update.html.twig', [
+            'form' => $form->createView(),
+        ]);
+   
+   
+    }
 
 }

@@ -29,11 +29,26 @@ class PizzaController extends AbstractController
             $repository->add($form->getData(), true);
 
             //redirection vers la liste des pizzas
-            return $this->redirectToRoute('app_pizza_home');
+            return $this->redirectToRoute('app_admin_pizza_list');
         }
 
         return $this->render('admin/pizza/create.html.twig', [
             'form' => $form->createView(),
         ]);
     }
+
+
+    /**
+     * @Route("/admin/pizza", name="app_admin_pizza_list")
+     */
+    public function list(Request $request, PizzaRepository $repository): Response
+    {
+        $pizzas= $repository->findAll();
+        //affichage en passant la liste des pizzas récupérées
+        return $this->render('admin/pizza/list.html.twig', [
+            'pizzas' => $pizzas,
+        ]);
+    }
+
+
 }

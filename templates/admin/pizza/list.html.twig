@@ -28,7 +28,7 @@
                 <div class="price">
                     <p>Prix: {{ pizza.price }} €</p>
                 </div>
-                <a class="btn" href="">
+                <a class="btn" href="{{ path('app_admin_pizza_delete', {id: pizza.id}) }}">
                     <i class="fa-solid fa-trash"></i>
                     <span>Supprimer </span>
                 </a>

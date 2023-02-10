@@ -8,8 +8,14 @@ use App\Repository\PizzaRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
+
+
+/**
+     * @IsGranted("ROLE_ADMIN")
+     */
 class PizzaController extends AbstractController
 {
     /**
@@ -78,6 +84,19 @@ class PizzaController extends AbstractController
         ]);
    
    
+    }
+
+
+
+        /**
+     * @Route("/admin/pizza/{id}/supprimer", name="app_admin_pizza_delete")
+     */
+    public function delete(Pizza $pizza, PizzaRepository $repository): Response
+    {
+        $pizzas= $repository->remove($pizza, true);
+        
+        //redirection à la liste des pizzas
+        return $this->redirectToRoute('app_admin_pizza_list');
     }
 
 }

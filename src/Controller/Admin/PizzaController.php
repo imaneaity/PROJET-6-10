@@ -18,6 +18,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
      */
 class PizzaController extends AbstractController
 {
+
+        /**
+     * @Route("/admin", name="app_admin_home")
+     */
+    public function home(Request $request, PizzaRepository $repository): Response
+    {
+        return $this->render('admin/pizza/home.html.twig');
+    }
+
+
+
     /**
      * @Route("/admin/pizza/nouvelle", name="app_admin_pizza_create")
      */
